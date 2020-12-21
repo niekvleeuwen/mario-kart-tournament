@@ -32,11 +32,29 @@ class TournamentsController extends Controller
 
     public function store()
     {
-        $tournament = auth()->user()->tournaments()->create(request()->validate([
-            'name' => 'required|unique:tournaments|',
-            'players' => 'required|integer',
+        $data = request()->validate([
+            'name' => 'required|unique:tournaments',
+            'players' => 'required',
             'rounds' => 'required|integer',
-        ]));
+        ]);
+
+        $players = explode("\r\n",$data['players']);
+
+        $tournament = auth()->user()->tournaments()->create($data);
+
+        $player_ids = [];
+        foreach($players as $player)
+        {
+            $p = new Player;
+            $p->tournament_id = $tournament->id;
+            $p->name = $player;
+            $p->score = array_fill(0, $tournament->rounds, 0);
+            $p->save();
+            array_push($player_ids, $p->id);
+        }
+
+        $tournament->players = $player_ids;
+        $tournament->save();
 
         return redirect('/tournaments/' . $tournament->id);
     }

@@ -19,6 +19,7 @@ class CreateTournamentsTable extends Migration
             $table->string('name');
             $table->json('players');
             $table->integer('rounds');
+            $table->integer('rounds_played')->default(0);
             $table->timestamps();
         });
     }

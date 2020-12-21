@@ -19,8 +19,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 /* Tournaments */
 Route::get('/tournaments', [App\Http\Controllers\TournamentsController::class, 'index'])->name('tournaments.index');
 Route::get('/tournaments/create', [App\Http\Controllers\TournamentsController::class, 'create'])->name('tournaments.create');

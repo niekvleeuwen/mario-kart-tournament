@@ -20,6 +20,7 @@ class CreateTournamentsTable extends Migration
             $table->json('players');
             $table->integer('rounds');
             $table->integer('rounds_played')->default(0);
+            $table->json('schedule')->nullable();
             $table->timestamps();
         });
     }

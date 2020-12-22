@@ -25,7 +25,8 @@ Route::get('/tournaments/create', [App\Http\Controllers\TournamentsController::c
 Route::get('/tournaments/{tournament}', [App\Http\Controllers\TournamentsController::class, 'show'])->name('tournaments.show');
 Route::get('/tournaments/{tournament}/edit', [App\Http\Controllers\TournamentsController::class, 'edit'])->name('tournaments.edit');
 Route::post('/tournaments', [App\Http\Controllers\TournamentsController::class, 'store'])->name('tournaments.store');
-Route::patch('/tournaments/{tournament}', [App\Http\Controllers\TournamentsController::class, 'update'])->name('tournaments.update');
+Route::patch('/tournaments/{tournament}', [App\Http\Controllers\TournamentsController::class, 'updatescores'])->name('tournaments.updatescores');
+Route::get('/tournaments/{tournament}/update', [App\Http\Controllers\TournamentsController::class, 'update'])->name('tournaments.update');
 Route::delete('/tournaments/{tournament}', [App\Http\Controllers\TournamentsController::class, 'delete'])->name('tournaments.delete');
 
 

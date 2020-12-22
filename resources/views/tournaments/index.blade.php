@@ -15,14 +15,16 @@
                   <thead>
                     <tr>
                       <th>Tournaments</th>
-                      <th>Rounds player</th>
+                      <th>Rounds</th>
+                      <th>Progress</th>
                     </tr>
                   </thead>
                   <tbody>
                       @foreach (auth()->user()->tournaments as $tournament)
                       <tr>
                         <td><a href="/tournaments/{{ $tournament->id }}">{{ $tournament->name }}</a></td>
-                        <td>x / {{ $tournament->rounds }}</td>
+                        <td>{{ $tournament->rounds_played }} / {{ $tournament->rounds }}</td>
+                        <td><progress class="nes-progress is-pattern" value="{{ $tournament->rounds_played }}" max="{{ $tournament->rounds }}"></progress></td>
                       </tr>
                       @endforeach
                   </tbody>

@@ -17,6 +17,7 @@ class Tournament extends Model
 
     protected $casts = [
         'players' => 'array',
+        'schedule' => 'array',
     ];
 
     public function user()

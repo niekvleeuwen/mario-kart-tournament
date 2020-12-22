@@ -39,7 +39,7 @@
                         <div class="form-group row">
                             <label for="players"  class="col-md-4 col-form-label text-md-right">Players</label>
                             <div class="col-md-6">
-                                <textarea class="form-control nes-textarea" id="players"name="players" rows="8"  value="{{ old('players') }}" required autocomplete="players"></textarea>
+                                <textarea class="form-control nes-textarea" id="players" name="players" rows="8" required>{{ old('players') }}</textarea>
 
                                 @error('players')
                                     <span class="invalid-feedback" role="alert">
@@ -51,11 +51,31 @@
 
                         <div class="form-group row">
                             <label for="rounds" class="col-md-4 col-form-label text-md-right">Number of rounds</label>
+                            <div class="col-md-6">
+                                <div class="nes-select">
+                                    <select required id="rounds" name="rounds">
+                                        <option value="2">2</option>
+                                        <option value="4" selected>4</option>
+                                        <option value="6">6</option>
+                                        <option value="8">8</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                                @error('rounds')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="playersperround" class="col-md-4 col-form-label text-md-right">Number of players per round</label>
 
                             <div class="col-md-6">
-                                <input id="rounds" type="rounds" class="nes-input form-control @error('rounds') is-invalid @enderror" name="rounds" value="{{ old('rounds') }}" required>
+                                <input id="playersperround" type="number" class="nes-input form-control @error('playersperround') is-invalid @enderror" name="playersperround" value="{{ old('playersperround') }}" required>
 
-                                @error('rounds')
+                                @error('playersperround')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
